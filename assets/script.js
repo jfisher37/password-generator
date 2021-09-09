@@ -22,13 +22,31 @@ function generatePassword(){
 
 // create alert telling them we're about to ask for criteria
 
+alert("Please select the desired features for your password.");
+
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password
 // WHEN prompted for the length of the password
 
 // create a prompt re: passwork length between 8 and 128
 
+let chosenLength = prompt("How long would you like your password (between 8 and 128 characters)?");
+
+if (chosenLength > 7 && chosenLength < 129){
+  criteria();
+}
+
 // if length is not between 8 and 128, say invalid and call generatePassword
+
+else {
+  alert ("Invalid selection.");
+  generatePassword()
+};
+};
+
+function criteria(){
+
+
 
 // THEN I choose a length of at least 8 characters and no more than 128 characters
 // WHEN asked for character types to include in the password
@@ -36,11 +54,18 @@ function generatePassword(){
 
 //create preArray to get characters pushed into it
 
+let preArray = [];
+
+
 // create an empty array to contain possible characters
+
+let charArray = [];
 
 //for every affirmative confirm, push a random element from respective array into preArray
 
 // create confirms for lowercase, uppercase, numeric, and special characters. if their confirms are true, push to charArray.
+
+confirm("Would you like your password to include lowercase letters?")
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
