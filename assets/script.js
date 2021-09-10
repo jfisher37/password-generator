@@ -42,14 +42,17 @@ if (chosenLength > 7 && chosenLength < 129){
 
 // if length is not between 8 and 128, say invalid and call generatePassword
 
+else if (!chosenLength){
+  return
+}
+
 else if (chosenLength < 8 || chosenLength > 128){
   alert ("Invalid selection.");
   generatePassword()
-}
-
-else if (chosenLength === ""){
-  return
 };
+
+
+
 
 // this isn't working...
 
@@ -57,6 +60,7 @@ else if (chosenLength === ""){
 
 function criteria(){
 
+  console.log(chosenLength)
 
 
 // THEN I choose a length of at least 8 characters and no more than 128 characters
@@ -113,15 +117,20 @@ if (specConf === true){
   charArray.push(...specialChar);
 };
 
-// if (lowerConf === false && upperConf === false && numConf === false && specConf === false) {
-//   alert("You must select at least one type of character. Try again.");
-//   criteria();
+if (lowerConf === false && upperConf === false 
+  && numConf === false && specConf === false) {
+  alert("You must select at least one type of character. Try again.");
+
+  criteria();
+}
+else {
+//   alert("Find your password below.")
 // };
 
 // ^Let's ask about this
 
-// console.log(preArray);
-// console.log(charArray);
+console.log(preArray);
+console.log(charArray);
 
 //^console.logs to track progress
 
@@ -142,13 +151,14 @@ for (let i = 0; i < 128; i++){
   preArray.push(charArray[Math.floor(Math.random() * charArray.length)]);
 };
 
-// console.log(preArray);
+console.log(preArray);
 // ^Log to verify things are going as hoped.
 
 // set passArray = preArray.slice(0, promptRePasswordLength)
 passArray = preArray.slice(0, chosenLength);
 
-// console.log(passArray);
+
+console.log(passArray);
 // ^Checking passArray (to compare to finalArray)
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
@@ -176,6 +186,8 @@ console.log(finalArray);
 let passwordText = document.querySelector("#password");
 
 passwordText.value = finalArray.join("");
+
+}
 
 //Moved these two lines (140 and 142) from above so that they existed within the scot of func criteria.
 
