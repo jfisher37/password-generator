@@ -136,6 +136,9 @@ passArray = preArray.slice(0, chosenLength);
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 
+console.log(passArray.length);
+// ^making sure the final length matches chosen length
+
 // return passArray.join("")
 let passwordText = document.querySelector("#password");
 
@@ -147,7 +150,7 @@ passwordText.value = passArray.join("");
 // THEN the password is either displayed in an alert or written to the page
 
 //^It kinda looks like it's already set to display on the page, but we'll see when we get here. 
-}
+};
 
 // criteria(); 
 // here for console.logs in criteria function. Comment out when done.
