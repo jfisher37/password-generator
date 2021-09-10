@@ -42,10 +42,17 @@ if (chosenLength > 7 && chosenLength < 129){
 
 // if length is not between 8 and 128, say invalid and call generatePassword
 
-else {
+else if (chosenLength < 8 || chosenLength > 128){
   alert ("Invalid selection.");
   generatePassword()
+}
+
+else if (chosenLength === ""){
+  return
 };
+
+// this isn't working...
+
 };
 
 function criteria(){
@@ -106,6 +113,13 @@ if (specConf === true){
   charArray.push(...specialChar);
 };
 
+// if (lowerConf === false && upperConf === false && numConf === false && specConf === false) {
+//   alert("You must select at least one type of character. Try again.");
+//   criteria();
+// };
+
+// ^Let's ask about this
+
 // console.log(preArray);
 // console.log(charArray);
 
@@ -133,16 +147,35 @@ for (let i = 0; i < 128; i++){
 
 // set passArray = preArray.slice(0, promptRePasswordLength)
 passArray = preArray.slice(0, chosenLength);
+
+// console.log(passArray);
+// ^Checking passArray (to compare to finalArray)
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 
-console.log(passArray.length);
+// Let's try to create a randomizer:
+
+let finalArray = [];
+
+while (passArray.length) {
+  let randIndex = Math.floor(Math.random() * passArray.length);
+  finalArray.push (passArray[randIndex]);
+  passArray.splice (randIndex, 1);
+  
+};
+
+console.log(finalArray);
+// ^Checking finalArray to compare to passArray
+
+
+
+// console.log(passArray.length);
 // ^making sure the final length matches chosen length
 
 // return passArray.join("")
 let passwordText = document.querySelector("#password");
 
-passwordText.value = passArray.join("");
+passwordText.value = finalArray.join("");
 
 //Moved these two lines (140 and 142) from above so that they existed within the scot of func criteria.
 
