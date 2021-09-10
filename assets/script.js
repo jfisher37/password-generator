@@ -46,7 +46,7 @@ else if (!chosenLength){
   return
 }
 
-else if (chosenLength < 8 || chosenLength > 128){
+else if (chosenLength < 8 || chosenLength > 128 || typeof chosenLength !== Number){
   alert ("Invalid selection.");
   generatePassword()
 };
