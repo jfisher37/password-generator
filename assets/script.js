@@ -63,9 +63,28 @@ let charArray = [];
 
 //for every affirmative confirm, push a random element from respective array into preArray
 
+//create arrays for character options
+
+let lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+let upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+let numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+let specialChar = [" ", "!",`"`, "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<","=", ">", "?", "@","[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
+
+// console.log(numeric.length)
+
 // create confirms for lowercase, uppercase, numeric, and special characters. if their confirms are true, push to charArray.
 
-confirm("Would you like your password to include lowercase letters?")
+let lowerConf = confirm("Would you like your password to include lowercase letters?");
+
+if (lowerConf === true){
+  preArray.push(lowerCase[Math.floor(Math.random() * lowerCase.length)]);
+  charArray.push(...lowerCase)
+}
+
+console.log(preArray);
+console.log(charArray);
+
+//^console.logs to track progress
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
@@ -85,3 +104,6 @@ confirm("Would you like your password to include lowercase letters?")
 
 //^It kinda looks like it's already set to display on the page, but we'll see when we get here. 
 }
+
+criteria(); 
+// 
