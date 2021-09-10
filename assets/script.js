@@ -78,20 +78,52 @@ let lowerConf = confirm("Would you like your password to include lowercase lette
 
 if (lowerConf === true){
   preArray.push(lowerCase[Math.floor(Math.random() * lowerCase.length)]);
-  charArray.push(...lowerCase)
-}
+  charArray.push(...lowerCase);
+};
 
-console.log(preArray);
-console.log(charArray);
+let upperConf = confirm("Would you like your password to include uppercase letters?");
+
+if (upperConf === true){
+  preArray.push(upperCase[Math.floor(Math.random() * upperCase.length)]);
+  charArray.push(...upperCase);
+};
+
+let numConf = confirm("Would you like your password to include numbers?");
+
+if (numConf === true){
+  preArray.push(numeric[Math.floor(Math.random() * numeric.length)]);
+  charArray.push(...numeric);
+};
+
+let specConf = confirm("Would you like your password to include special characters?");
+
+if (specConf === true){
+  preArray.push(specialChar[Math.floor(Math.random() * specialChar.length)]);
+  charArray.push(...specialChar);
+};
+
+// console.log(preArray);
+// console.log(charArray);
 
 //^console.logs to track progress
+
+
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
 
 // create a new array (later to be turned to string with .join("") method), called passArray
 
-//create a for loop with i <= 128, in this loop, push charArray[Math.ciel(Math.random() * charArray.length] into preArray
+let passArray = []
+
+//create a for loop with i < 128, in this loop, push charArray[Math.ciel(Math.random() * charArray.length] into preArray
+
+for (let i = 0; i < 128; i++){
+  preArray.push(charArray[Math.floor(Math.random() * charArray.length)]);
+}
+
+// console.log(preArray);
+// ^Log to verify things are going as hoped.
 
 // set passArray = preArray.slice(0, promptRePasswordLength)
 // WHEN all prompts are answered
@@ -106,4 +138,4 @@ console.log(charArray);
 }
 
 criteria(); 
-// 
+// here for console.logs in criteria function. Comment out when done.
