@@ -3,15 +3,18 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  generatePassword();
+  // var passwordText = document.querySelector("#password");
+  
+  // passwordText.value = password;
 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+let chosenLength = 0
+// ^decided to declare this in global context to allow it to be used in criteria function.
 
 function generatePassword(){
 
@@ -30,10 +33,11 @@ alert("Please select the desired features for your password.");
 
 // create a prompt re: passwork length between 8 and 128
 
-let chosenLength = prompt("How long would you like your password (between 8 and 128 characters)?");
+chosenLength = prompt("How long would you like your password (between 8 and 128 characters)?");
 
 if (chosenLength > 7 && chosenLength < 129){
   criteria();
+  return chosenLength
 }
 
 // if length is not between 8 and 128, say invalid and call generatePassword
@@ -115,21 +119,29 @@ if (specConf === true){
 // create a new array (later to be turned to string with .join("") method), called passArray
 
 let passArray = []
+// console.log(chosenLength)
+// ^log to ensure that chosenLength made it successsfully into criteria func 
 
 //create a for loop with i < 128, in this loop, push charArray[Math.ciel(Math.random() * charArray.length] into preArray
 
 for (let i = 0; i < 128; i++){
   preArray.push(charArray[Math.floor(Math.random() * charArray.length)]);
-}
+};
 
 // console.log(preArray);
 // ^Log to verify things are going as hoped.
 
 // set passArray = preArray.slice(0, promptRePasswordLength)
+passArray = preArray.slice(0, chosenLength);
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 
 // return passArray.join("")
+let passwordText = document.querySelector("#password");
+
+passwordText.value = passArray.join("");
+
+//Moved these two lines (140 and 142) from above so that they existed within the scot of func criteria.
 
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
@@ -137,5 +149,5 @@ for (let i = 0; i < 128; i++){
 //^It kinda looks like it's already set to display on the page, but we'll see when we get here. 
 }
 
-criteria(); 
+// criteria(); 
 // here for console.logs in criteria function. Comment out when done.
